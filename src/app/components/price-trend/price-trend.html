@@ -1,0 +1,22 @@
+<section>
+  <h2 class="text-2xl font-bold text-slate-800 mb-2">
+    اتجاه أسعار الذهب
+  </h2>
+
+  <p class="text-slate-500 mb-6">
+    تغير سعر جرام الذهب عيار 21 خلال الفترة الماضية — بيانات تجريبية
+  </p>
+
+  <div class="w-full max-w-5xl mx-auto bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+
+  <div class="relative h-96">
+    <canvas
+    [options]="lineChartOptions"
+      baseChart
+      [data]="lineChartData"
+      [type]="'line'">
+    </canvas>
+  </div>
+
+  </div>
+</section>

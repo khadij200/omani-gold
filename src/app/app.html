@@ -1,0 +1,42 @@
+
+<app-header />
+
+<main>
+  <div class="px-4 md:px-8 lg:px-16">
+    <app-hero-banner></app-hero-banner>
+  </div>
+
+  <section id="prices" class="scroll-mt-24 px-4 py-12 md:px-8 lg:px-16">
+
+    <h2 class="text-2xl font-bold text-slate-800 mb-2">
+                 أسعار الذهب اليوم
+    </h2>
+
+    <p class="text-slate-500 mb-6">
+    أسعار استرشادية للجرام بالريال العُماني — بيانات تجريبية
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    @for (gold of goldPrices; track gold.karat) {
+
+      <app-price-card
+        [karat] = "gold.karat"
+        [price] = "gold.price">
+      </app-price-card>
+      
+    }
+    </div>
+  </section>
+
+ <app-gold-calculator />
+
+  <section id="trend" class="px-4 py-12 md:px-8 lg:px-16">
+    <app-price-trend />
+  </section>
+
+  <section id="history" class="scroll-mt-24 px-4 py-12 md:px-8 lg:px-16">
+    <app-price-history />
+  </section>
+</main>
+
+<app-footer />

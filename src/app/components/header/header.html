@@ -1,0 +1,52 @@
+<header class="bg-slate-600 text-white px-6 py-4 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto w-full flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+            <img class="w-12 h-12 object-contain" src="/logogold.png" alt="شعار ذهب عمان">
+    
+            <div>
+                <h1>ذهب عُمان</h1>
+                <p>أسعار الذهب في سلطنة عُمان</p>
+            </div>
+        </div>
+
+    <button
+        type="button"
+        class="md:hidden text-white text-2xl p-2"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="فتح أو إغلاق القائمة">
+        {{ menuOpen() ? '✕' : '☰' }}
+    </button>
+
+    <nav class="hidden md:flex items-center gap-6">
+        <a href="#prices">أسعار الذهب</a>    
+        <a href="#calculate">حاسبة الذهب</a>
+        <a href="#history">سجل الأسعار</a>
+            
+    </nav>
+    <span class="hidden lg:inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm whitespace-nowrap">
+         بيانات تجريبية
+    </span>
+    </div>
+    @if (menuOpen()) {
+        <nav class="md:hidden flex flex-col gap-4 mt-4 pt-4 border-t border-slate-400">
+
+            <a href="#prices" (click)="toggleMenu()">
+                 أسعار الذهب
+            </a>
+
+            <a href="#calculate" (click)="toggleMenu()">
+                 حاسبة الذهب
+            </a>
+
+            <a href="#history" (click)="toggleMenu()">
+                 سجل الأسعار
+            </a>
+
+            <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm w-fit">
+                 بيانات تجريبية
+            </span>
+
+        </nav>
+    }
+</header>
