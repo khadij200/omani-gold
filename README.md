@@ -1,6 +1,6 @@
 # Omani Gold
 
-Omani Gold is a responsive web application built with Angular 21
+Omani Gold is a responsive web application built with Angular 22
 and Tailwind CSS to display sample gold prices in Oman.
 
 The application provides gold prices for different karats,
@@ -17,12 +17,13 @@ demonstration purposes only and do not represent live market prices.
 - Display a 30-day gold price trend chart.
 - View historical gold prices with pagination.
 - Responsive design for desktop, tablet, and mobile.
-- Arabic interface with RTL support.
 - Mobile navigation menu.
+- Bilingual support (Arabic RTL / English LTR) with instant language switching.
+- Dark and Light mode with a theme toggle.
 
 ## Technologies Used
 
-- Angular 21
+- - Angular 22
 - TypeScript
 - HTML5
 - Tailwind CSS
@@ -46,7 +47,7 @@ Make sure you have the following installed:
 1. Clone the GitHub repository:
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/khadij200/omani-gold.git
    ```
 
 2. Navigate to the project directory:
