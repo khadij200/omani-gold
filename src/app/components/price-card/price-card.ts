@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, input, inject } from '@angular/core';
+import { Language } from '../../services/language';
 import { DecimalPipe } from '@angular/common';
 
 @Component({
@@ -10,4 +11,5 @@ import { DecimalPipe } from '@angular/common';
 export class PriceCard {
   karat = input.required<string>();
   price = input.required<number>();
+  language = inject(Language);
 }

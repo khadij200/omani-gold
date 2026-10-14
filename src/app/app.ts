@@ -1,4 +1,5 @@
 import { Component, signal, inject } from '@angular/core';
+import { Language } from './services/language';
 import { GoldPrice } from './services/gold-price';
 import { Header } from './components/header/header';
 import { Footer } from './components/footer/footer';
@@ -21,5 +22,7 @@ export class App {
   private goldPriceService = inject(GoldPrice);
 
   goldPrices = this.goldPriceService.goldPrices;
+
+  language = inject(Language);
 
 }

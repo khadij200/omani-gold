@@ -1,25 +1,35 @@
-<footer class="bg-slate-600 text-white px-4 py-8 md:px-8 lg:px-16">
+<footer class="bg-slate-600 dark:bg-slate-950 text-white px-4 py-8 md:px-8 lg:px-16 transition-colors duration-300">
 
   <div class="max-w-6xl mx-auto">
 
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
 
       <div>
-        <h3 class="text-xl font-bold">ذهب عُمان</h3>
+        <h3 class="text-xl font-bold">
+          {{ language.currentLanguage() === 'ar'
+          ? 'ذهب عُمان'
+          : 'Omani Gold' }}
+        </h3>
         <p class="text-slate-200">
-          أسعار الذهب في سلطنة عُمان
+          {{ language.currentLanguage() === 'ar'
+          ? 'أسعار الذهب في سلطنة عُمان'
+          : 'Gold Prices in the Sultanate of Oman' }}
         </p>
       </div>
 
-      <p class="text-amber-200">
-        بيانات تجريبية لأغراض العرض فقط
+      <p class="text-slate-200 dark:text-slate-300">
+        {{ language.currentLanguage() === 'ar'
+        ? 'بيانات تجريبية لأغراض العرض فقط'
+        : 'Demo Data for Display Purposes Only' }}
       </p>
 
     </div>
 
-    <div class="border-t border-slate-400 mt-6 pt-4 text-center">
+    <div class="border-t border-slate-400 dark:border-slate-700 mt-6 pt-4 text-center">
       <p class="text-sm text-slate-200">
-        © 2026 ذهب عُمان — جميع الحقوق محفوظة
+         {{ language.currentLanguage() === 'ar'
+          ? '© 2026 ذهب عُمان — جميع الحقوق محفوظة'
+          : '© 2026 Omani Gold — All Rights Reserved' }}
       </p>
     </div>
 

@@ -1,22 +1,30 @@
 <section>
-  <h2 class="text-2xl font-bold text-slate-800 mb-2">
-    اتجاه أسعار الذهب
+  <h2 class="text-2xl font-bold text-slate-800 dark:text-amber-100 mb-2">
+    {{ language.currentLanguage() === 'ar'
+    ? 'اتجاه أسعار الذهب'
+    : 'Gold Price Trend' }}
   </h2>
 
-  <p class="text-slate-500 mb-6">
-    تغير سعر جرام الذهب عيار 21 خلال الفترة الماضية — بيانات تجريبية
+  <p class="text-slate-500 dark:text-slate-300 mb-6">
+    {{ language.currentLanguage() === 'ar'
+      ? 'تغير سعر جرام الذهب عيار 21 خلال الفترة الماضية — بيانات تجريبية'
+      : '21K Gold Price per Gram Over Time — Demo Data' }}
   </p>
 
-  <div class="w-full max-w-5xl mx-auto bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+  <div class="w-full max-w-5xl mx-auto
+            bg-white dark:bg-slate-800
+            border border-slate-200 dark:border-amber-600/30
+            rounded-xl shadow-sm p-6
+            transition-colors duration-300">
 
-  <div class="relative h-96">
-    <canvas
-    [options]="lineChartOptions"
-      baseChart
-      [data]="lineChartData"
-      [type]="'line'">
-    </canvas>
-  </div>
+    <div class="relative h-96">
+      <canvas
+        [options]="lineChartOptions"
+          baseChart
+          [data]="lineChartData"
+          [type]="'line'">
+      </canvas>
+    </div>
 
   </div>
 </section>

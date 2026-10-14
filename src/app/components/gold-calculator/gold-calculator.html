@@ -1,70 +1,126 @@
 <section id="calculate" class="scroll-mt-24 px-4 py-12 md:px-8 lg:px-16">
-    <h2 class="text-2xl font-bold text-slate-800 mb-2">
-        حاسبة الذهب
+    <h2 class="text-2xl font-bold text-slate-800 dark:text-amber-100 mb-2">
+        {{ language.currentLanguage() === 'ar'
+            ? 'حاسبة الذهب'
+            : 'Gold Calculator' }} 
     </h2>
 
-    <p class="text-slate-500 mb-6">
-        احسب القيمة التقديرية للذهب حسب العيار والوزن
+    <p class="text-slate-500 dark:text-slate-300 mb-6">
+        {{ language.currentLanguage() === 'ar'
+            ? 'احسب القيمة التقديرية للذهب حسب العيار والوزن'
+            : 'Calculate the estimated gold value based on karat and weight' }}
     </p>
-    <div class="w-full max-w-lg bg-white border border-slate-200 rounded-xl shadow-sm p-6">
+    <div class="w-full max-w-lg
+            bg-white dark:bg-slate-800
+            text-slate-800 dark:text-amber-100
+            border border-slate-200 dark:border-amber-600/30
+            rounded-xl shadow-sm p-6
+            transition-colors duration-300">
 
-    <div class="flex flex-col gap-2 mb-4">
-        <label for="karat">اختر عيار الذهب</label>
+        <div class="flex flex-col gap-2 mb-4">
+            <label for="karat">
+                {{ language.currentLanguage() === 'ar'
+                ? 'اختر عيار الذهب'
+                : 'Select Gold Karat' }}
+            </label>    
 
-        <select
-            id="karat"
-            class="border border-slate-300 rounded-lg p-3"
-            [value]="selectedKarat()"
-            (change)="changeKarat($any($event.target).value)">
-                <option value="18K">عيار 18</option>
-                <option value="21K">عيار 21</option>
-                <option value="22K">عيار 22</option>
-                <option value="24K">عيار 24</option>
-        </select>
-    </div>    
-    <div class="flex flex-col gap-2 mb-4">
-        <label for="weight">الوزن بالجرام</label>
+            <select
+                id="karat"
+                class="w-full border border-slate-300
+                    dark:border-slate-600
+                    bg-white dark:bg-slate-900
+                    text-slate-800 dark:text-white
+                    rounded-lg p-3
+                    focus:outline-none focus:ring-2 focus:ring-amber-500"
+                [value]="selectedKarat()"
+                (change)="changeKarat($any($event.target).value)">
 
-        <input
-            id="weight"
-            type="number"
-            min="0"
-            step="0.1"
-            placeholder="أدخلي الوزن"
-            class="border border-slate-300 rounded-lg p-3"
-            [value]="weight()"
-            (input)="changeWeight($any($event.target).value)">
-    </div>
+                <option value="18K">
+                    {{ language.currentLanguage() === 'ar' ? 'عيار 18' : '18K Gold' }}
+                </option>
 
-  
-    <button
-        type="button"
-        (click)="calculateGold()"
-        class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-lg mt-6">
-         احسب قيمة الذهب
-    </button>
+                <option value="21K">
+                {{ language.currentLanguage() === 'ar' ? 'عيار 21' : '21K Gold' }}
+                </option>
 
-    @if (errorMessage() !== null) {
-        <p class="mt-3 text-sm text-red-600">
-            {{ errorMessage() }}
-        </p>
-}
+                <option value="22K">
+                {{ language.currentLanguage() === 'ar' ? 'عيار 22' : '22K Gold' }}
+                </option>
 
-   @if (totalPrice() !== null) {
-        <div class="mt-6 rounded-xl bg-amber-50 border border-amber-200 p-5">
-            <p class="text-sm text-slate-600 mb-2">
-                 القيمة التقديرية للذهب
-            </p>
-
-            <p class="text-2xl font-bold text-amber-700">
-                {{ totalPrice() | number:'1.3-3' }} ريال عُماني
-            </p>
+                <option value="24K">
+                {{ language.currentLanguage() === 'ar' ? 'عيار 24' : '24K Gold' }}
+                </option>
+            </select>
         </div>
-}
-    @else if (errorMessage() === null) {
-        <p class="mt-4 text-slate-500">
-         اختاري عيار الذهب وأدخلي الوزن، ثم اضغطي على زر الحساب لعرض النتيجة.
-        </p>
-}
+
+        <div class="flex flex-col gap-2 mb-4">
+            <label for="weight">
+                {{ language.currentLanguage() === 'ar'
+                ? 'الوزن بالجرام'
+                : 'Weight in Grams' }}
+            </label>
+
+            <input
+                id="weight"
+                type="number"
+                min="0"
+                step="0.1"
+                [placeholder]="language.currentLanguage() === 'ar'
+                ? 'أدخلي الوزن'
+                : 'Enter Weight'"
+                class="w-full border border-slate-300
+                    dark:border-slate-600
+                    bg-white dark:bg-slate-900
+                    text-slate-800 dark:text-white
+                    dark:placeholder:text-slate-400
+                    rounded-lg p-3
+                    focus:outline-none focus:ring-2 focus:ring-amber-500"
+                [value]="weight()"
+                (input)="changeWeight($any($event.target).value)">
+        </div>
+
+    
+        <button
+            type="button"
+            (click)="calculateGold()"
+            class="bg-amber-600 hover:bg-amber-700 text-white font-bold px-6 py-3 rounded-lg mt-6">
+            {{ language.currentLanguage() === 'ar'
+                ? 'احسب قيمة الذهب'
+                : 'Calculate Gold Value' }}  
+        </button>
+
+        @if (errorMessage() !== null) {
+            <p class="mt-3 text-sm text-red-600">
+                {{ errorMessage() }}
+            </p>
+        }
+
+        @if (totalPrice() !== null) {
+                <div class="mt-6 rounded-xl
+                    bg-amber-50 dark:bg-slate-900
+                    border border-amber-200 dark:border-amber-500/40
+                    p-5">
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-2">
+                        {{ language.currentLanguage() === 'ar'
+                        ? 'القيمة التقديرية للذهب'
+                        : 'Estimated Gold Value' }}
+                    </p>
+
+                    <p class="text-2xl font-bold text-amber-700 dark:text-amber-400">
+                        {{ totalPrice() | number:'1.3-3' }}
+
+                        {{ language.currentLanguage() === 'ar'
+                            ? 'ريال عُماني'
+                            : 'OMR' }}
+                    </p>
+                </div>
+        }
+        @else if (errorMessage() === null) {
+            <p class="mt-4 text-slate-500 dark:text-slate-300">
+                {{ language.currentLanguage() === 'ar'
+                ? 'اختاري عيار الذهب وأدخلي الوزن، ثم اضغطي على زر الحساب لعرض النتيجة.'
+                : 'Select the gold karat and enter the weight, then click Calculate to view the result.' }}
+            </p>
+        }
     </div>
 </section>
