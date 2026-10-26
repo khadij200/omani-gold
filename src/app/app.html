@@ -2,11 +2,22 @@
 <app-header />
 
 <main class="bg-white dark:bg-slate-900 min-h-screen transition-colors duration-300">
+
+ @if (translatedError()) {
+    <p class="text-red-600 text-center p-4">
+      {{ translatedError() }}
+    </p>
+ }
   <div class="px-4 pt-6 md:px-8 lg:px-16">
     <app-hero-banner></app-hero-banner>
   </div>
 
   <section id="prices" class="scroll-mt-24 px-4 py-12 md:px-8 lg:px-16">
+    @if (isLoading()) {
+      <p class="text-center text-amber-600 dark:text-amber-300 p-4">
+        جاري تحميل أسعار الذهب...
+      </p>
+    }
 
     <h2 class="text-2xl font-bold text-slate-800 dark:text-amber-100 mb-2">
       {{ language.currentLanguage() === 'ar'
@@ -28,6 +39,14 @@
         [price] = "gold.price">
       </app-price-card>
       
+    }
+
+    @empty {
+      @if (!isLoading() && !errorMessage()) {
+      <p class="text-red-600 dark:text-red-400 font-medium">
+        لا توجد أسعار متاحة حاليًا
+      </p>
+      }
     }
     </div>
   </section>

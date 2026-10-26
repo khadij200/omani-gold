@@ -1,4 +1,4 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, computed } from '@angular/core';
 import { Language } from './services/language';
 import { GoldPrice } from './services/gold-price';
 import { Header } from './components/header/header';
@@ -21,8 +21,49 @@ export class App {
 
   private goldPriceService = inject(GoldPrice);
 
-  goldPrices = this.goldPriceService.goldPrices;
+  errorMessage = signal<string | null>(null);
+
+  translatedError = computed(() => {
+    if(!this.errorMessage()){
+      return null;
+    }
+    return this.language.currentLanguage() === 'ar'
+    ? 'يتعذّر تحميل أسعار الذهب، حاول مجددًا'
+    : 'Unable to load gold prices. Please try again.';
+
+  });
+  
+  isLoading = signal<boolean>(true);
+
+  goldPrices: { karat: string; price: number }[] = [];
 
   language = inject(Language);
 
+  testApi(){
+    this.goldPriceService.getGoldPrices().subscribe({ next: data =>{
+
+      console.log(data);
+      this.goldPrices = data;
+      this.goldPriceService.goldPrices = data;
+      this.errorMessage.set(null);
+      this.isLoading.set(false);
+      
+    },
+
+    error: (err) => {
+      console.error('Failed to load gold prices:', err);
+      this.goldPriceService.goldPrices = [];
+      this.errorMessage.set(
+      this.language.currentLanguage() === 'ar'
+        ? 'يتعذّر تحميل أسعار الذهب، حاول مجددًا'
+        : 'Unable to load gold prices. Please try again.'
+      );
+      this.isLoading.set(false);
+    }
+    
+  });
+  }
+  ngOnInit() {
+  this.testApi();
+  }
 }

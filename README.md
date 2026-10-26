@@ -1,7 +1,8 @@
 # Omani Gold
 
-Omani Gold is a responsive web application built with Angular 22
-and Tailwind CSS to display sample gold prices in Oman.
+Omani Gold is a responsive full-stack web application built with Angular 22, Tailwind CSS, and ASP.NET Core Web API using C#.
+
+The Angular frontend communicates with the ASP.NET Core backend through HTTP requests to retrieve sample gold prices for different karats in Oman.
 
 The application provides gold prices for different karats,
 a gold price calculator, a 30-day price trend chart,
@@ -30,6 +31,10 @@ demonstration purposes only and do not represent live market prices.
 - Chart.js
 - ng2-charts
 - Angular Signals
+- ASP.NET Core Web API
+- C#
+- RESTful API
+- Angular HttpClient
 
 
 ## Installation & Running Instructions
@@ -41,6 +46,20 @@ Make sure you have the following installed:
 - Node.js
 - npm
 - Git
+- .NET 10 SDK
+
+### Running the Backend (ASP.NET Core Web API)
+
+1. Open a terminal in the GoldPriceTrackerAPI project directory.
+
+2. Start the backend server:
+
+   ```bash
+   dotnet run
+
+3. The API should be available at:
+
+http://localhost:5295/api/goldprices
 
 ### Installation
 
@@ -79,3 +98,10 @@ To build the application for production, run:
 ```bash
 npm run build
 ```
+## Source Code Repositories
+
+- Frontend (Angular):
+  https://github.com/khadij200/omani-gold
+
+- Backend (ASP.NET Core Web API):
+  https://github.com/khadij200/GoldPriceTrackerAPI

@@ -1,10 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GoldPrice {
-
+  private http = inject(HttpClient);
+  getGoldPrices(){
+    return this.http.get<{ karat: string; price: number}[]>(
+      'http://localhost:5295/api/goldprices'
+    );
+  }
   goldPrices = [
     { karat: '18K', price: 39.5 },
     { karat: '21K', price: 46.0 },

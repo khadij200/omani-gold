@@ -3,11 +3,13 @@ import { provideRouter } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import localeAr from '@angular/common/locales/ar';
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 registerLocaleData(localeAr);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideHttpClient()
   ]
 };
