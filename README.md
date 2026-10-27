@@ -63,33 +63,77 @@ http://localhost:5295/api/goldprices
 
 ### Installation
 
-1. Clone the GitHub repository:
+This project requires both the **ASP.NET Core Web API (Backend)** and the **Angular Application (Frontend)**.
 
-   ```bash
-   git clone https://github.com/khadij200/omani-gold.git
-   ```
+**Prerequisites:**
+- Node.js and npm
+- .NET 10 SDK
+- Git
 
-2. Navigate to the project directory:
+#### Step 1: Clone the Backend Repository
 
-   ```bash
-   cd omani-gold
-   ```
+Open a terminal and run:
 
-3. Install the project dependencies:
+```bash
+git clone https://github.com/khadij200/GoldPriceTrackerAPI.git
+```
 
-   ```bash
-   npm install
-   ```
+#### Step 2: Navigate to the Backend Directory
 
-4. Start the development server:
+```bash
+cd GoldPriceTrackerAPI
+```
 
-   ```bash
-   npm start
-   ```
+#### Step 3: Start the Backend Server
 
-5. Open the application in your browser:
+```bash
+dotnet run
+```
 
-   http://localhost:4200/
+The API will run at:
+
+http://localhost:5295/api/goldprices
+
+Keep this terminal running.
+
+#### Step 4: Clone the Frontend Repository
+
+Open a **new terminal** and run:
+
+```bash
+git clone https://github.com/khadij200/omani-gold.git
+```
+
+#### Step 5: Navigate to the Frontend Directory
+
+```bash
+cd omani-gold
+```
+
+#### Step 6: Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+#### Step 7: Start the Angular Application
+
+```bash
+npm start
+```
+
+#### Step 8: Open the Application
+
+Open your browser and visit:
+
+http://localhost:4200/
+
+The Angular frontend will fetch the gold prices from the ASP.NET Core Web API.
+
+**Important Notes:**
+- Both backend and frontend servers must be running simultaneously.
+- The application uses demonstration data, not live gold market prices.
+- The backend must be accessible at `http://localhost:5295` for the frontend to retrieve gold prices.
 
 ### Production Build
 
